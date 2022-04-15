@@ -22,34 +22,26 @@ function textToFloat(textId) {
   return floatedPrice;
 }
 
+//Tax calculator
+function calculateTaxForTotalPrice() {
+  const totalPriceWithTax =
+    (taxAmountFloat / 100) * textToFloat("subTotalPrice") +
+    textToFloat("subTotalPrice");
+  document.getElementById("totalPrice").innerHTML = totalPriceWithTax;
+}
+
 const iphonePriceFloat = textToFloat("iphonePrice");
 const casePriceFloat = textToFloat("casePrice");
-const totalPriceFloat = textToFloat('totalPrice');
-const taxAmountFloat = textToFloat('taxAmount');
-const subtotalPrice = textToFloat('subTotalPrice');
-
-// console.log(tax);
-// console.log(totalPriceFloat);
-//Tax calculator
-function calculateTax(){
-const amountOfTax = ((taxAmountFloat/100) * subtotalPrice) + subtotalPrice;
-document.getElementById('totalPrice').innerText = amountOfTax;
-// return amountOfTax;
-};
-// const totalCalculation = 
-// function taxTotal(parameter){
-//   var subtotalPrice;
-//   var taxe = 12.5;
-//   subtotalPrice= 1219;
-//   var taxe = ((taxe/100) * subtotalPrice) + subtotalPrice;
-//   console.log(taxe);
-// };
+const totalPriceFloat = textToFloat("totalPrice");
+const taxAmountFloat = textToFloat("taxAmount");
+const subtotalPrice = textToFloat("subTotalPrice");
 
 //Device Amount Decrease
 const decreaseDevice = document.getElementById("decreaseDevice");
 decreaseDevice.addEventListener("click", function () {
   increaseDecreaseProduct("deviceAmount", -1);
   increaseDecreasePrice("subTotalPrice", -1 * iphonePriceFloat);
+  calculateTaxForTotalPrice();
 });
 
 //Device Amount Increase
@@ -57,7 +49,7 @@ const increaseDevice = document.getElementById("increaseDevice");
 increaseDevice.addEventListener("click", function () {
   increaseDecreaseProduct("deviceAmount", 1);
   increaseDecreasePrice("subTotalPrice", iphonePriceFloat);
-  calculateTax(); //Print tax amount
+  calculateTaxForTotalPrice();
 });
 
 //Case Amount Decrease
@@ -65,6 +57,7 @@ const decreaseCase = document.getElementById("decreaseCase");
 decreaseCase.addEventListener("click", function () {
   increaseDecreaseProduct("caseAmount", -1);
   increaseDecreasePrice("subTotalPrice", -1 * casePriceFloat);
+  calculateTaxForTotalPrice();
 });
 
 //Case Amount Increase
@@ -72,6 +65,7 @@ const increaseCase = document.getElementById("increaseCase");
 increaseCase.addEventListener("click", function () {
   increaseDecreaseProduct("caseAmount", 1);
   increaseDecreasePrice("subTotalPrice", casePriceFloat);
+  calculateTaxForTotalPrice();
 });
 //Above incrementAmount will be in number such as -1 = decrease 1
 // and 1 = increase value by 1
