@@ -24,6 +24,26 @@ function textToFloat(textId) {
 
 const iphonePriceFloat = textToFloat("iphonePrice");
 const casePriceFloat = textToFloat("casePrice");
+const totalPriceFloat = textToFloat('totalPrice');
+const taxAmountFloat = textToFloat('taxAmount');
+const subtotalPrice = textToFloat('subTotalPrice');
+
+// console.log(tax);
+// console.log(totalPriceFloat);
+//Tax calculator
+function calculateTax(){
+const amountOfTax = ((taxAmountFloat/100) * subtotalPrice) + subtotalPrice;
+document.getElementById('totalPrice').innerText = amountOfTax;
+// return amountOfTax;
+};
+// const totalCalculation = 
+// function taxTotal(parameter){
+//   var subtotalPrice;
+//   var taxe = 12.5;
+//   subtotalPrice= 1219;
+//   var taxe = ((taxe/100) * subtotalPrice) + subtotalPrice;
+//   console.log(taxe);
+// };
 
 //Device Amount Decrease
 const decreaseDevice = document.getElementById("decreaseDevice");
@@ -37,6 +57,7 @@ const increaseDevice = document.getElementById("increaseDevice");
 increaseDevice.addEventListener("click", function () {
   increaseDecreaseProduct("deviceAmount", 1);
   increaseDecreasePrice("subTotalPrice", iphonePriceFloat);
+  calculateTax(); //Print tax amount
 });
 
 //Case Amount Decrease
