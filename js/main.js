@@ -69,18 +69,3 @@ increaseCase.addEventListener("click", function () {
 });
 //Above incrementAmount will be in number such as -1 = decrease 1
 // and 1 = increase value by 1
-
-
-// document.getElementById('removeItem1').addEventListener('click', function(event){
-//   console.log(this.parentNode.parentNode.parentNode.parentNode);
-//   document.getElementById('cartParent').removeChild(event.target);
-// // this.removeChild(this.parentNode.parentNode.parentNode.parentNode);
-// })
-
-// // document
-// // .getElementById("cartParent")
-// // .addEventListener("click", function (event) {
-// //   //Call the child's parent and tell tp remove the target(child)
-// //   event.target.parentNode.removeChild(event.target.document);
-// //   // console.log(this, event.target);
-// // });
